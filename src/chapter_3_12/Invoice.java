@@ -9,18 +9,12 @@ public class Invoice {
     public Invoice(String partNumber, String partDescription, int quantity, double price) {
         this.partNumber = partNumber;
         this.partDescription = partDescription;
-        this.quantity = quantity;
-        this.price = price;
+        this.quantity = quantity < 0 ? 0 : quantity;
+        this.price = price < 0 ? 0 : price;
     }
 
     public double getInvoiceAmount() {
-        double value = getPrice() * getQuantity();
-
-        if (value < 0.0) {
-            return 0.0;
-        } else {
-            return value;
-        }
+        return price * quantity;
     }
 
     public String getPartNumber() {
@@ -44,7 +38,7 @@ public class Invoice {
     }
 
     public void setQuantity(int quantity) {
-        this.quantity = quantity;
+        this.quantity = quantity < 0 ? 0 : quantity;
     }
 
     public double getPrice() {
@@ -52,6 +46,6 @@ public class Invoice {
     }
 
     public void setPrice(double price) {
-        this.price = price;
+        this.price = price < 0 ? 0 : price;
     }
 }

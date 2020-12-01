@@ -24,7 +24,7 @@ public class HealthProfileTest {
         HealthProfile stanley = new HealthProfile(firstName, lastName, month, day, year, height, weight);
 
         System.out.println("Name: " + stanley.getFirstName() + " " + stanley.getLastName());
-        System.out.println("Date of birth: " + stanley.getMonth() + "/" + stanley.getDay() + "/" + stanley.getYear());
+        System.out.println("Date of birth: " + stanley.getBirthMonth() + "/" + stanley.getBirthDay() + "/" + stanley.getBirthYear());
         System.out.println("Age: " + stanley.getAge());
         System.out.println("Maximum heart rate: " + stanley.maxHR());
         System.out.println("Target heart rate range: " +stanley.targetHR());

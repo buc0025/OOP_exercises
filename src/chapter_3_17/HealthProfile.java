@@ -1,100 +1,50 @@
 package chapter_3_17;
 
-public class HealthProfile {
-    private String firstName;
-    private String lastName;
-    private int month;
-    private int day;
-    private int year;
-    private int height;
-    private int weight;
+import chapter_3_16.HeartRates;
 
-    public HealthProfile(String firstName, String lastName, int month, int day, int year, int height, int weight) {
-        this.firstName = firstName;
-        this.lastName = lastName;
-        this.month = month;
-        this.day = day;
-        this.year = year;
-        this.height = height;
-        this.weight = weight;
+
+public class HealthProfile extends HeartRates {
+    private int heightInches;
+    private int weightPounds;
+
+    public HealthProfile(String firstName, String lastName, int birthMonth, int birthDay, int birthYear, int heightInches, int weightPounds) {
+        super(firstName, lastName, birthMonth, birthDay, birthYear);
+
+        if (heightInches < 1) {
+            throw new IllegalArgumentException("Height must be > 1 inch");
+        }
+
+        if (weightPounds < 1) {
+            throw new IllegalArgumentException("Weight must be > 1 pound");
+        }
+
+        this.heightInches = heightInches;
+        this.weightPounds = weightPounds;
     }
 
     public double getBMI() {
-        return (getWeight() * 703) / (getHeight() * getHeight());
+        return (weightPounds * 703) / (heightInches * heightInches);
     }
 
-    public int maxHR() {
-        return 220 - getAge();
+    public int getHeightInches() {
+        return heightInches;
     }
 
-    public String targetHR() {
-        double min = .5 * maxHR();
-        double max = .85 * maxHR();
-
-        return min + " - " + max;
-    }
-
-    public int getAge() {
-        if (getMonth() <= 11 && getDay() <= 23) {
-            return 2020 - getYear();
-        } else {
-            return 2020 - getYear() - 1;
+    public void setHeightInches(int heightInches) {
+        if (heightInches < 1) {
+            throw new IllegalArgumentException("Height must be > 1 inch");
         }
+        this.heightInches = heightInches;
     }
 
-    public String getFirstName() {
-        return firstName;
+    public int getWeightPounds() {
+        return weightPounds;
     }
 
-    public void setFirstName(String firstName) {
-        this.firstName = firstName;
-    }
-
-    public String getLastName() {
-        return lastName;
-    }
-
-    public void setLastName(String lastName) {
-        this.lastName = lastName;
-    }
-
-    public int getMonth() {
-        return month;
-    }
-
-    public void setMonth(int month) {
-        this.month = month;
-    }
-
-    public int getDay() {
-        return day;
-    }
-
-    public void setDay(int day) {
-        this.day = day;
-    }
-
-    public int getYear() {
-        return year;
-    }
-
-    public void setYear(int year) {
-        this.year = year;
-    }
-
-    public int getHeight() {
-        return height;
-    }
-
-    public void setHeight(int height) {
-        this.height = height;
-    }
-
-    public int getWeight() {
-        return weight;
-    }
-
-    public void setWeight(int weight) {
-        this.weight = weight;
+    public void setWeightPounds(int weightPounds) {
+        if (weightPounds < 1) {
+            throw new IllegalArgumentException("Weight must be > 1 pound");
+        }
+        this.weightPounds = weightPounds;
     }
 }

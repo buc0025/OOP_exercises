@@ -1,5 +1,0 @@
-.idea/*
-*.xml
-stringTests/*
-stringTests/string/*
-*.iml

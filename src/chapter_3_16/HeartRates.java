@@ -1,18 +1,20 @@
 package chapter_3_16;
 
+import java.time.LocalDate;
+
 public class HeartRates {
     private String firstName;
     private String lastName;
-    private int month;
-    private int day;
-    private int year;
+    private int birthMonth;
+    private int birthDay;
+    private int birthYear;
 
-    public HeartRates(String firstName, String lastName, int month, int day, int year) {
+    public HeartRates(String firstName, String lastName, int birthMonth, int birthDay, int birthYear) {
         this.firstName = firstName;
         this.lastName = lastName;
-        this.month = month;
-        this.day = day;
-        this.year = year;
+        this.birthMonth = birthMonth;
+        this.birthDay = birthDay;
+        this.birthYear = birthYear;
     }
 
     public int maxHR() {
@@ -27,10 +29,10 @@ public class HeartRates {
     }
 
     public int getAge() {
-        if (getMonth() <= 11 && getDay() <= 23) {
-            return 2020 - getYear();
+        if (birthMonth <= LocalDate.now().getMonthValue() && birthDay <= LocalDate.now().getDayOfMonth()) {
+            return LocalDate.now().getYear() - birthYear;
         } else {
-            return 2020 - getYear() - 1;
+            return LocalDate.now().getYear() - birthYear - 1;
         }
     }
 
@@ -50,27 +52,27 @@ public class HeartRates {
         this.lastName = lastName;
     }
 
-    public int getMonth() {
-        return month;
+    public int getBirthMonth() {
+        return birthMonth;
     }
 
-    public void setMonth(int month) {
-        this.month = month;
+    public void setBirthMonth(int birthMonth) {
+        this.birthMonth = birthMonth;
     }
 
-    public int getDay() {
-        return day;
+    public int getBirthDay() {
+        return birthDay;
     }
 
-    public void setDay(int day) {
-        this.day = day;
+    public void setBirthDay(int birthDay) {
+        this.birthDay = birthDay;
     }
 
-    public int getYear() {
-        return year;
+    public int getBirthYear() {
+        return birthYear;
     }
 
-    public void setYear(int year) {
-        this.year = year;
+    public void setBirthYear(int birthYear) {
+        this.birthYear = birthYear;
     }
 }
